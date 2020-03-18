@@ -23,7 +23,9 @@ class AccountContainer extends Component {
   }
 
   renderTransactions = () => {
-    return this.state.transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)
+    let filteredList = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
+
+    return filteredList.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)
   }
 
   addNewTransaction = newTransaction => {
@@ -36,6 +38,7 @@ class AccountContainer extends Component {
     this.setState({
       search: event.target.value
     })
+
   }
 
   render() {

@@ -18,11 +18,15 @@ class AccountContainer extends Component {
     )
   }
 
+  addTransaction = (tranObj) => {
+    this.setState({trans:[...this.state.trans,tranObj]})
+  }
+
   render() {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm addTransaction={this.addTransaction}/>
         <TransactionsList trans={this.state.trans}/>
       </div>
     );

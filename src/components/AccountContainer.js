@@ -28,9 +28,12 @@ class AccountContainer extends Component {
     let filteredList = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
 
     if(this.state.sort === "category") {
-      filteredList.sort((transA, transB) => transA.category.localeCompare(transB))
+      filteredList.sort((transA, transB) => transA.category.localeCompare(transB.category))
+      console.log(filteredList)
     } else if (this.state.sort === "description") {
-      filteredList.sort((transA, transB) => transA.description.localeCompare(transB))
+      filteredList.sort((transA, transB) => transA.description.localeCompare(transB.description))
+      console.log(filteredList)
+
     }
 
     return filteredList.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)

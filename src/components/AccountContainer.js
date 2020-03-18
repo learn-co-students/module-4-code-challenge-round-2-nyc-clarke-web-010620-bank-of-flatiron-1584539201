@@ -2,14 +2,22 @@ import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
-
+import EditForm from './EditForm'
 class AccountContainer extends Component {
 
   state = {
     transactions: [],
     filteredTransactions: [],
-    search: ""
+    search: "",
+    edit: false,
+    editForm: {
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    }
   }
+ 
 
   componentDidMount(){
 
@@ -41,7 +49,7 @@ class AccountContainer extends Component {
       
     })
   }
-
+  ///BONUS
   sortBy = (event) => {
     if(event.target.value === "Category"){
       this.setState({
@@ -61,7 +69,7 @@ class AccountContainer extends Component {
       })
     }
   }
-
+///BONUS
   deleteTransaction = (id) => {
     console.log(id)
     fetch(`http://localhost:6001/transactions/${id}`, {
@@ -73,12 +81,39 @@ class AccountContainer extends Component {
       filteredTransactions: this.state.filteredTransactions.filter(transaction => transaction.id !== id)
     })
   }
+ ///EXTRA
+  showEdit = (transaction) => {
+    console.log("working")
+    console.log(transaction)
+    this.setState({
+      edit: !this.state.edit,
+      editForm: transaction
+    })
+    
+  }
+
+  resetForm = () => {
+    this.setState({
+      editForm: {
+        date: '',
+        description: '',
+        category: '',
+        amount: ''
+      }
+    })
+  }
+
+  handleEditChange = (event) => {
+    this.setState({
+      editForm: {...this.state.form, [event.target.name]: event.target.value}
+    })
+  }
+
 
   render() {
-    console.log(this.state.search)
     return (
       <div>
-
+        
         <label>Sort Alphabetically By: </label>
         <select onChange={this.sortBy}>
           <option>Category</option>
@@ -87,9 +122,12 @@ class AccountContainer extends Component {
           <option>Date</option>
         </select>
 
+        {this.state.edit ? <EditForm editForm={this.state.editForm} handleEditChange={this.handleEditChange}/> : null }
+
+
         <Search search={this.state.search} handleSearch={this.handleSearch}/>
         <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
-        <TransactionsList transactions={this.state.filteredTransactions} deleteTransaction={this.deleteTransaction}/>
+        <TransactionsList transactions={this.state.filteredTransactions} deleteTransaction={this.deleteTransaction} showEdit={this.showEdit}/>
       </div>
     );
   }

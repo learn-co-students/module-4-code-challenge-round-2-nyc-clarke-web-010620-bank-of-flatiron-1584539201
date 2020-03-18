@@ -32,8 +32,13 @@ class App extends Component {
         Accept: 'application/json'
       },
       body: JSON.stringify({
-        
+
       })
+    })
+    .then(r=>r.json())
+    .then( )
+    this.setState({
+      this.date: "", 
     })
     
 

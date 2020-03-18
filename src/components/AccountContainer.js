@@ -19,7 +19,16 @@ class AccountContainer extends Component {
   }
 
   addTransaction = (tranObj) => {
-    this.setState({trans:[...this.state.trans,tranObj]})
+    fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          },
+        body: JSON.stringify(tranObj),
+      }
+    ).then(resp => resp.json()).then((content) => {
+      this.setState({trans:[...this.state.trans, content]})
+  });
   }
 
   render() {

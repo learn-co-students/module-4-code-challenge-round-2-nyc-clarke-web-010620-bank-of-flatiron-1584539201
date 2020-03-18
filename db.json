@@ -83,6 +83,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-04-29",
+      "description": "birthday cash",
+      "category": "MONEY ",
+      "amount": "1000000000",
+      "id": 13
     }
   ]
 }

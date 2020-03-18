@@ -10,7 +10,8 @@ const API = "http://localhost:6001/transactions"
 class AccountContainer extends Component {
 
   state = {
-    transactions: []
+    transactions: [],
+    search: ""
   }
 
   componentDidMount() {
@@ -31,11 +32,16 @@ class AccountContainer extends Component {
       }))
   }
 
+  searchHandler = event => {
+    this.setState({
+      search: event.target.value
+    })
+  }
 
   render() {
     return (
       <div>
-        <Search />
+        <Search searchHandler={this.searchHandler}/>
         <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
         <TransactionsList renderTransactions={this.renderTransactions} />
       </div>

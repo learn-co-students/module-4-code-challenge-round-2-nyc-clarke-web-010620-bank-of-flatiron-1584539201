@@ -90,6 +90,13 @@
       "category": "Food",
       "amount": "14",
       "id": 13
+    },
+    {
+      "date": "2020-03-19",
+      "description": "Destressers",
+      "category": "Food",
+      "amount": "-20",
+      "id": 14
     }
   ]
 }

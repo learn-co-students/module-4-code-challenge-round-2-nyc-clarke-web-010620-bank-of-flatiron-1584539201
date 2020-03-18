@@ -28,7 +28,7 @@ class AccountContainer extends Component {
         body: JSON.stringify(tranObj),
       }
     ).then(resp => resp.json()).then((content) => {
-      this.setState({trans:[...this.state.trans, content]})
+      this.setState({trans:[...this.state.trans, content], displayTrans:[...this.state.trans, content]})
   });
   }
 

@@ -90,6 +90,41 @@
       "category": "MONEY ",
       "amount": "1000000000",
       "id": 13
+    },
+    {
+      "date": "2020-03-18",
+      "description": "Quartine Cash",
+      "category": "Food",
+      "amount": "1000",
+      "id": 14
+    },
+    {
+      "date": "2020-03-18",
+      "description": "Quartine Cash",
+      "category": "Food",
+      "amount": "1000",
+      "id": 15
+    },
+    {
+      "date": "2020-03-18",
+      "description": " gfctv",
+      "category": "Income",
+      "amount": "2",
+      "id": 16
+    },
+    {
+      "date": "",
+      "description": "cash money",
+      "category": "MONEY ",
+      "amount": "1",
+      "id": 17
+    },
+    {
+      "date": "2020-03-31",
+      "description": "cash money",
+      "category": "MONEY ",
+      "amount": "2",
+      "id": 18
     }
   ]
 }

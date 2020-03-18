@@ -9,12 +9,13 @@ const URL = "http://localhost:6001/transactions"
 class AccountContainer extends Component {
 
   state = {
-    trans: []
+    trans: [],
+    displayTrans: []
   }
 
   componentDidMount() {
     fetch(URL).then(resp=>resp.json()).then(content=>
-      this.setState({trans: content})
+      this.setState({trans: content, displayTrans: content})
     )
   }
 
@@ -31,12 +32,21 @@ class AccountContainer extends Component {
   });
   }
 
+  searchFilter = (str) => {
+    if (str === "") {
+      this.setState({displayTrans: this.state.trans})
+    }
+    else {
+    this.setState({displayTrans: this.state.trans.filter(tran =>tran.description.toLowerCase().match(str.toLowerCase()) )}) 
+    }
+  }
+
   render() {
     return (
       <div>
-        <Search />
+        <Search searchFilter={this.searchFilter}/>
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList trans={this.state.trans}/>
+        <TransactionsList trans={this.state.displayTrans}/>
       </div>
     );
   }

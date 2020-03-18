@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
   render() {
+    console.log(this.props)
     return (
       <div className="ui segment">
         <form className="ui form">
           <div className="inline fields">
-            <input type="date" name="date" />
+            <input type="date" name="date" value={this.props} />
             <input type="text" name="description" placeholder="Description" />
             <input type="text" name="category" placeholder="Category" />
             <input

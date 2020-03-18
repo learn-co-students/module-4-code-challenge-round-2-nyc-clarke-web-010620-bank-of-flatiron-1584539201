@@ -7,7 +7,9 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    showTransactions: []
+    showTransactions: [],
+    searchBar: '',
+    searchedtransaction: {}
   }
 
   componentDidMount() {
@@ -17,22 +19,38 @@ class AccountContainer extends Component {
   }
 
   addNewTransaction = (transaction) => {
-    let trCopy = [...this.state.showTransactions]
+    let trCopy = [...this.state.transactions]
     trCopy.push(transaction)
     this.setState({
+      transactions: trCopy,
       showTransactions: trCopy
     })
-    console.log(transaction, 'done')
     
   }
 
+  searchTransaction = (event) => {
+    this.setState({
+      searchBar: event.target.value,
+      searchedtransaction: this.state.transactions.filter(t=> t.description.includes(this.state.searchBar))
 
+    })    
+  }
+
+  renderSearch = () => {
+    this.setState({
+      showTransactions: this.state.searchedtransaction
+    })
+  }
+
+ 
+  
+  
   render() {
     
     
     return (
       <div>
-        <Search />
+        <Search searchTransaction={this.searchTransaction} renderSearch={this.renderSearch}/>
         <AddTransactionForm updateInput={this.updateInput} submitForm={this.submitForm} addNewTransaction={this.addNewTransaction}/>
         <TransactionsList transactions={this.state.showTransactions}/>
       </div>

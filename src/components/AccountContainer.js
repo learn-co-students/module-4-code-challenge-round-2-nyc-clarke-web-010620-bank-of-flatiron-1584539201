@@ -4,6 +4,7 @@ import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 const BASEURL = 'http://localhost:6001/'
 const GETURL = "transactions"
+const POSTURL = `transactions`
 
 class AccountContainer extends Component {
   state = {
@@ -15,6 +16,8 @@ class AccountContainer extends Component {
     .then(resp=>resp.json())
     .then(transactions => this.setState({transactions}))
   }
+  
+
 
   render() {
     return (

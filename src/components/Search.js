@@ -9,7 +9,8 @@ const Search = (props) => {
         onChange={props.handleSearchChange}
       />
       
-      <button className="ui button abc-button" onClick={props.sortABC}><i className="circular search link icon"></i>ABC </button>
+      <button className="ui button abc-button" onClick={props.sortABCDesc}><i className="circular search link icon"></i>ABC: Description </button>
+      <button className="ui button abc-button" onClick={props.sortABCCat}><i className="circular search link icon"></i>ABC: Category </button>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 
 const Search = () => {
+  // filteredTransaction: this.state.transaction.filter(transaction => transaction.name.includes(this.state.search))
   return (
     <div className="ui large fluid icon input">
       <input
@@ -16,3 +17,4 @@ const Search = () => {
 };
 
 export default Search;
+

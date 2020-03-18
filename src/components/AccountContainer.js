@@ -28,9 +28,13 @@ class AccountContainer extends Component {
   }
   
   handleSearch = (e) => {
-    this.setState({searchTerm: e.target.value})
+    this.setState({searchTerm: e.target.value}), this.addSearchTerms()
+  }
+  
+  addSearchTerms = () => {
     this.setState({filteredSearch: this.state.transactions.filter(transaction => transaction.description.includes(this.state.searchTerm))})
   }
+  
   
   handleAddChange = (e) =>{
     e.persist()

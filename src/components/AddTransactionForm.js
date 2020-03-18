@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+
+  state = {
+    form: {
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      form: {...this.state.form, [event.target.name]: event.target.value}
+    })
+  }
   render() {
     return (
       <div className="ui segment">

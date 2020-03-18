@@ -7,7 +7,7 @@ class AccountContainer extends Component {
   render() {
     return (
       <div>
-        <Search />
+        <Search makeFilter={this.makeFilter}/>
         
 
         <TransactionsList transactions={this.props.transactions} />

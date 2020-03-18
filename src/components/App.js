@@ -22,7 +22,7 @@ class App extends Component {
       })
     })
   }
-
+ /// save the new values entered into the form and update state with those!
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -31,6 +31,7 @@ class App extends Component {
 
   // get current state of transactions and add new transaction to the whole array 
   addTransaction = (transaction) => {
+    // console.log(transaction)
     this.setState({ transactions: [...this.state.transactions, transaction]})
   }
 
@@ -48,12 +49,16 @@ class App extends Component {
       })
     })
     .then(r=>r.json())
-    .then( )
+    .then(transaction => this.addTransaction(transaction) )
+    ////// now need to set state to have all the form parts empty again
     // this.setState({
-    //   this.date: "", )}
+    //   date: "", )}
 
     }
     
+    makeFilter = () => {
+      
+    }
 
   render() {
     return (

@@ -22,7 +22,13 @@ class AccountContainer extends Component {
   }
 
   renderTransactions = () => {
-    return this.state.transactions.map(transaction => <Transaction transaction={transaction}/>)
+    return this.state.transactions.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)
+  }
+
+  addNewTransaction = newTransaction => {
+      this.setState(prevState => ({
+        transactions: [...prevState.transactions, newTransaction]
+      }))
   }
 
 

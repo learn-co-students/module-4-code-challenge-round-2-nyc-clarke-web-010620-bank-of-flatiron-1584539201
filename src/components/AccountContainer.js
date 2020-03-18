@@ -52,6 +52,19 @@ class AccountContainer extends Component {
       })
   }
 
+  deleteTransaction = (id) => {
+    fetch(`${baseURL}/${id}`,{
+      method: 'DELETE'
+    }).then(resp => resp.json())
+      .then(body => {
+       let transIndex = this.state.transactions.findIndex(transaction => transaction.id === id)
+       let transCopy = [...this.state.transactions]
+       console.log("foundindex", transIndex, "actual index", transCopy[transIndex])
+        transCopy.splice(transIndex, 1)
+        this.setState({transactions: transCopy, filteredTransactions: transCopy})
+      })
+  }
+
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -76,7 +89,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleSearchChange={this.handleSearchChange} searchTerm={this.state.searchTerm}/>
         <AddTransactionForm handleSubmit={this.addTransaction} handleChange={this.handleChange} values={values}/>
-        <TransactionsList transactions={this.state.filteredTransactions}/>
+        <TransactionsList transactions={this.state.filteredTransactions} delete={this.deleteTransaction}/>
       </div>
     );
   }

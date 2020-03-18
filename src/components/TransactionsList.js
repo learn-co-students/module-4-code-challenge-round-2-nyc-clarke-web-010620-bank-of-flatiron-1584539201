@@ -4,7 +4,7 @@ import Transaction from "./Transaction";
 const TransactionsList = (props) => {
 
   const renderTransactions = () => {
-   return props.transactions.map(transaction => <Transaction key={transaction.id} {...transaction}/>)
+   return props.transactions.map(transaction => <Transaction key={transaction.id} {...transaction} delete={props.delete}/>)
   }
   return (
     <table className="ui celled striped padded table">
@@ -21,6 +21,9 @@ const TransactionsList = (props) => {
           </th>
           <th>
             <h3 className="ui center aligned header">Amount</h3>
+          </th>
+          <th>
+             <h3 className="ui center aligned header">Delete</h3>
           </th>
         </tr>
         {renderTransactions()}

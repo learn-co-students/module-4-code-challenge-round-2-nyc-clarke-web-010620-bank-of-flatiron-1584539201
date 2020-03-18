@@ -52,7 +52,7 @@ class AddTransactionForm extends Component {
     .then(resp => resp.json())
     .catch(error => console.log(error))
     .then(transaction => this.props.addTransaction(transaction))
-    .then(this.setState(this.getInitialState()))
+    this.setState(this.getInitialState())
     console.log(this.state)
   }
 

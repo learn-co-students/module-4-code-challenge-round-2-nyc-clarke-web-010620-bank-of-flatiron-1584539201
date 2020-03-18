@@ -132,6 +132,13 @@
       "category": "",
       "amount": "",
       "id": 19
+    },
+    {
+      "date": "2020-03-05",
+      "description": "New Transaction",
+      "category": "Food",
+      "amount": "42.39",
+      "id": 20
     }
   ]
 }

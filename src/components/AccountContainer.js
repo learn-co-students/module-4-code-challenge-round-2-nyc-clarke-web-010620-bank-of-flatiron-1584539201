@@ -7,7 +7,8 @@ const BASE_URL = `http://localhost:6001/transactions`
 class AccountContainer extends Component {
 
   state = {
-    transactions: []
+    transactions: [],
+    searchTerm: ''
   }
 
   componentDidMount() {
@@ -24,12 +25,19 @@ class AccountContainer extends Component {
     })
   }
 
+  onSearchChange = (e) => {
+    this.setState({ searchTerm: e.target.value  })
+  }
+
   render() {
+    const filteredTransactions = this.state.transactions.filter(transaction =>
+      transaction.description.includes(this.state.searchTerm)
+      ) 
     return (
       <div>
-        <Search />
+        <Search onSearchChange={this.onSearchChange} />
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList transactions={this.state.transactions} />
+        <TransactionsList transactions={filteredTransactions} />
       </div>
     );
   }

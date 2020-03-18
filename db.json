@@ -104,6 +104,13 @@
       "category": "sdf",
       "amount": "100",
       "id": 17
+    },
+    {
+      "date": "2020-10-08",
+      "description": "testing ",
+      "category": "test",
+      "amount": "500",
+      "id": 18
     }
   ]
 }

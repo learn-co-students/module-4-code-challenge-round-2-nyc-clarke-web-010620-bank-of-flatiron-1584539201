@@ -51,6 +51,14 @@ class AccountContainer extends Component {
       this.setState({
         filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.description > b.description ? 1 : -1)
       })
+    } else if(event.target.value === "Amount"){
+      this.setState({
+        filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.amount > b.amount ? 1 : -1)
+      })
+    } else if(event.target.value === "Date"){
+      this.setState({
+        filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.date > b.date ? 1 : -1)
+      })
     }
   }
 
@@ -75,6 +83,8 @@ class AccountContainer extends Component {
         <select onChange={this.sortBy}>
           <option>Category</option>
           <option>Description</option>
+          <option>Amount</option>
+          <option>Date</option>
         </select>
 
         <Search search={this.state.search} handleSearch={this.handleSearch}/>

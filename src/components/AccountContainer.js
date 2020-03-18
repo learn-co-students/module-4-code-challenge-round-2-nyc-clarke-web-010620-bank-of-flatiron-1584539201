@@ -25,7 +25,8 @@ class AccountContainer extends Component {
 
   addNewTransaction = (newTransaction) => {
     this.setState({
-      transactions: [...this.state.transactions, newTransaction]
+      transactions: [...this.state.transactions, newTransaction],
+      filteredTransactions: [...this.state.filteredTransactions, newTransaction]
     })
   }
 
@@ -41,10 +42,30 @@ class AccountContainer extends Component {
     })
   }
 
+  sortBy = (event) => {
+    console.log(event.target.value)
+    if(event.target.value === "Category"){
+      this.setState({
+        filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.category > b.category ? 1 : -1)
+      })
+    } else if(event.target.value === "Description"){
+      this.setState({
+        filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.description > b.description ? 1 : -1)
+      })
+    }
+  }
+
   render() {
     console.log(this.state.search)
     return (
       <div>
+
+        <label>Sort Alphabetically By: </label>
+        <select onChange={this.sortBy}>
+          <option>Category</option>
+          <option>Description</option>
+        </select>
+
         <Search search={this.state.search} handleSearch={this.handleSearch}/>
         <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
         <TransactionsList transactions={this.state.filteredTransactions}/>

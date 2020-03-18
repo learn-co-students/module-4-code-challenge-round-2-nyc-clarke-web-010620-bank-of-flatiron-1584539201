@@ -125,6 +125,13 @@
       "category": "MONEY ",
       "amount": "2",
       "id": 18
+    },
+    {
+      "date": "2020-03-04",
+      "description": "venmo to Jerry",
+      "category": "Money",
+      "amount": "20",
+      "id": 19
     }
   ]
 }

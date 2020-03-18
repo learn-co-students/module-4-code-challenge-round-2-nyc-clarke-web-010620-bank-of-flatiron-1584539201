@@ -15,7 +15,9 @@ class AccountContainer extends Component {
 
   componentDidMount() {
     fetch(URL).then(resp=>resp.json()).then(content=>
-      this.setState({trans: content, displayTrans: content})
+      this.setState({
+        trans: content, 
+        displayTrans: content})
     )
   }
 
@@ -41,12 +43,24 @@ class AccountContainer extends Component {
     }
   }
 
+  sortbyDate = () => {
+    this.setState({displayTrans: this.state.displayTrans.sort((a, b) => b.description - a.description)})
+  }
+
+  deleteTransaction = (tranObj) => {
+    fetch(`http://localhost:6001/transactions/${tranObj.id}`, {
+        method: 'Delete',
+      }
+    ).then(resp => resp.json()).then((content) => {
+  });
+  }
+
   render() {
     return (
       <div>
         <Search searchFilter={this.searchFilter}/>
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList trans={this.state.displayTrans}/>
+        <TransactionsList trans={this.state.displayTrans} sortbyDate={this.sortbyDate} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }

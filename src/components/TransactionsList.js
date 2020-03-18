@@ -3,7 +3,11 @@ import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
   const renderTransaction = () => {
-    return props.transactions.map(transaction => <Transaction key={transaction.id} {...transaction}/>)
+    if (props.filteredSearch.length > 0){
+      return props.filteredSearch.map(transaction => <Transaction key={transaction.id} {...transaction}/>)
+    } else {
+     return props.transactions.map(transaction => <Transaction key={transaction.id} {...transaction}/>)
+    }
   }
   return (
     <table className="ui celled striped padded table">

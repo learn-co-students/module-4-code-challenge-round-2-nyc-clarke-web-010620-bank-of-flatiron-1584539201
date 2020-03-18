@@ -97,6 +97,34 @@
       "category": "Food",
       "amount": 3,
       "id": 14
+    },
+    {
+      "date": "2020-03-18",
+      "description": "Bought Clothes",
+      "category": "Fashion",
+      "amount": 300,
+      "id": 15
+    },
+    {
+      "date": "2020-03-18",
+      "description": "Ham",
+      "category": "Food",
+      "amount": 20,
+      "id": 16
+    },
+    {
+      "date": "2020-03-19",
+      "description": "Halloween Candy",
+      "category": "Food",
+      "amount": 200,
+      "id": 17
+    },
+    {
+      "date": "2020-03-19",
+      "description": "Car",
+      "category": "Vehicles",
+      "amount": 10000,
+      "id": 18
     }
   ]
 }

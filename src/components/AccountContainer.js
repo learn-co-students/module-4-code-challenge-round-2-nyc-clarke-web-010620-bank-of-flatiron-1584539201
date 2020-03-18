@@ -45,10 +45,10 @@ class AccountContainer extends Component {
       .then(body => {
         let transactionsCopy = [...this.state.transactions]
         transactionsCopy.push(body)
-        this.setState({transactions: transactionsCopy})
         let filteredTransactionsCopy = [...this.state.filteredTransactions]
         filteredTransactionsCopy.push(body)
-        this.setState({filteredTransactions: filteredTransactionsCopy})
+        this.setState({filteredTransactions: filteredTransactionsCopy, transactions: transactionsCopy, date: "",
+      description: "", amount: "", category: ""})
       })
   }
 
@@ -70,11 +70,12 @@ class AccountContainer extends Component {
   }
 
   render() {
-    console.log(this.state.searchTerm)
+    const values = Object.assign({}, {date: this.state.date}, {description: this.state.description},{category: this.state.category}, {amount: this.state.amount})
+    console.log(values)
     return (
       <div>
         <Search handleSearchChange={this.handleSearchChange} searchTerm={this.state.searchTerm}/>
-        <AddTransactionForm handleSubmit={this.addTransaction} handleChange={this.handleChange}/>
+        <AddTransactionForm handleSubmit={this.addTransaction} handleChange={this.handleChange} values={values}/>
         <TransactionsList transactions={this.state.filteredTransactions}/>
       </div>
     );

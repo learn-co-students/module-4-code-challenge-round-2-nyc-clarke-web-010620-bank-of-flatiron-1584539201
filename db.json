@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-12-20",
+      "description": "Bought bread",
+      "category": "Meals",
+      "amount": "10.00",
+      "id": 13
+    },
+    {
+      "date": "2019-11-01",
+      "description": "Bought Milk",
+      "category": "Food",
+      "amount": 3,
+      "id": 14
     }
   ]
 }

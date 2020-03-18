@@ -23,28 +23,34 @@ class App extends Component {
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    fetch('http://localhost:6001/transactions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-
-      })
-    })
-    .then(r=>r.json())
-    .then( )
+  handleChange = (e) => {
     this.setState({
-      this.date: "", 
+      [e.target.name]: e.target.value
     })
+  }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   fetch('http://localhost:6001/transactions', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json'
+  //     },
+  //     body: JSON.stringify({
+
+  //     })
+  //   })
+  //   .then(r=>r.json())
+  //   .then( )
+  //   this.setState({
+  //     this.date: "", 
+  //   })
     
 
 
-    this.setState({ transactions: [...this.state.transactions, transaction]})
-  }
+  //   this.setState({ transactions: [...this.state.transactions, transaction]})
+  // }
 
   render() {
     return (
@@ -57,6 +63,8 @@ class App extends Component {
             description={this.state.description}
             category={this.state.category}
             amount={this.state.amount}
+            handleSubmit
+            handleChange
         />
         <AccountContainer transactions={this.state.transactions} />
       </div>

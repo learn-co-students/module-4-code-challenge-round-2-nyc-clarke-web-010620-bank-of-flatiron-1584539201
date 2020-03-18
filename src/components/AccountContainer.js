@@ -43,7 +43,6 @@ class AccountContainer extends Component {
   }
 
   sortBy = (event) => {
-    console.log(event.target.value)
     if(event.target.value === "Category"){
       this.setState({
         filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.category > b.category ? 1 : -1)
@@ -53,6 +52,18 @@ class AccountContainer extends Component {
         filteredTransactions: this.state.filteredTransactions.sort((a,b) => a.description > b.description ? 1 : -1)
       })
     }
+  }
+
+  deleteTransaction = (id) => {
+    console.log(id)
+    fetch(`http://localhost:6001/transactions/${id}`, {
+      method: "DELETE", 
+      headers: {'Content-Type': 'application/json', 'Accepts': 'application/json'}
+    })
+    this.setState({
+      transactions: this.state.transactions.filter(transaction => transaction.id !== id),
+      filteredTransactions: this.state.filteredTransactions.filter(transaction => transaction.id !== id)
+    })
   }
 
   render() {
@@ -68,7 +79,7 @@ class AccountContainer extends Component {
 
         <Search search={this.state.search} handleSearch={this.handleSearch}/>
         <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
-        <TransactionsList transactions={this.state.filteredTransactions}/>
+        <TransactionsList transactions={this.state.filteredTransactions} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }

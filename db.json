@@ -92,25 +92,11 @@
       "id": 13
     },
     {
-      "date": "2020-03-13",
-      "description": "test",
-      "category": "test",
-      "amount": "100",
-      "id": 14
-    },
-    {
       "date": "2020-03-18",
       "description": "hurray",
       "category": "yay",
       "amount": "1000000000",
       "id": 15
-    },
-    {
-      "date": "2020-03-25",
-      "description": "test again ",
-      "category": "sdf",
-      "amount": "100",
-      "id": 16
     },
     {
       "date": "2020-03-28",

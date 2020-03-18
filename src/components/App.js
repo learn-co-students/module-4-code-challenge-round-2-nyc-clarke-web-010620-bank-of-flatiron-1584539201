@@ -23,8 +23,22 @@ class App extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:6001/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        
+      })
+    })
     
+
+
+    this.setState({ transactions: [...this.state.transactions, transaction]})
   }
 
   render() {

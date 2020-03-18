@@ -27,6 +27,12 @@ class AccountContainer extends Component {
   renderTransactions = () => {
     let filteredList = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
 
+    if(this.state.sort === "category") {
+      filteredList.sort((transA, transB) => transA.category.localeCompare(transB))
+    } else if (this.state.sort === "description") {
+      filteredList.sort((transA, transB) => transA.description.localeCompare(transB))
+    }
+
     return filteredList.map(transaction => <Transaction key={transaction.id} transaction={transaction}/>)
   }
 
@@ -40,9 +46,13 @@ class AccountContainer extends Component {
     this.setState({
       search: event.target.value
     })
-
   }
 
+  sortHandler = event => {
+    this.setState({
+      sort: event.target.value
+    })
+  }
 
 
   render() {
@@ -50,7 +60,7 @@ class AccountContainer extends Component {
       <div>
         <Search searchHandler={this.searchHandler}/>
         <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
-        Sort Alphabetically By: <Sort sort={this.state.sort}/>
+        Sort Alphabetically By: <Sort sortHandler={this.sortHandler} sort={this.state.sort}/>
         <TransactionsList renderTransactions={this.renderTransactions} />
       </div>
     );

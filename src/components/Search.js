@@ -8,7 +8,8 @@ const Search = (props) => {
         placeholder={"Search your Recent Transactions"}
         onChange={props.handleSearchChange}
       />
-      <i className="circular search link icon"></i>
+      
+      <button className="ui button abc-button" onClick={props.sortABC}><i className="circular search link icon"></i>ABC </button>
     </div>
   );
 };

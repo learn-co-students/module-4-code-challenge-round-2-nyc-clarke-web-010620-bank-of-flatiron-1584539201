@@ -82,12 +82,19 @@ class AccountContainer extends Component {
       })
   }
 
+  sortABC = (e) => {
+    e.preventDefault()
+    let filteredCopy3 = [...this.state.filteredTransactions]
+    let sortedCopy = filteredCopy3.sort((a, b) => (a.description > b.description) ? 1 : -1)
+    this.setState({filteredTransactions: sortedCopy})
+  }
+
   render() {
     const values = Object.assign({}, {date: this.state.date}, {description: this.state.description},{category: this.state.category}, {amount: this.state.amount})
-    console.log(values)
+    
     return (
       <div>
-        <Search handleSearchChange={this.handleSearchChange} searchTerm={this.state.searchTerm}/>
+        <Search handleSearchChange={this.handleSearchChange} searchTerm={this.state.searchTerm} sortABC={this.sortABC}/>
         <AddTransactionForm handleSubmit={this.addTransaction} handleChange={this.handleChange} values={values}/>
         <TransactionsList transactions={this.state.filteredTransactions} delete={this.deleteTransaction}/>
       </div>

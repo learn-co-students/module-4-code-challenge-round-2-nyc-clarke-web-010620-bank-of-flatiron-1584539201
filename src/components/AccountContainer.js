@@ -3,6 +3,7 @@ import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 import Transaction from "./Transaction";
+import Sort from "./Sort"
 
 
 const API = "http://localhost:6001/transactions"
@@ -11,7 +12,8 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    search: ""
+    search: "",
+    sort: "none"
   }
 
   componentDidMount() {
@@ -41,11 +43,14 @@ class AccountContainer extends Component {
 
   }
 
+
+
   render() {
     return (
       <div>
         <Search searchHandler={this.searchHandler}/>
         <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
+        Sort Alphabetically By: <Sort sort={this.state.sort}/>
         <TransactionsList renderTransactions={this.renderTransactions} />
       </div>
     );

@@ -21,7 +21,10 @@ class App extends Component {
         transactions: transactions
       })
     })
+  }
 
+  handleSubmit = () => {
+    
   }
 
   render() {

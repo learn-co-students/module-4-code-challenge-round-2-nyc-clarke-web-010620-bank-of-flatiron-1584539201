@@ -69,6 +69,20 @@
       "description": "MTA Vending Machine: MetroCard",
       "category": "Transportation",
       "amount": -116.39
+    },
+    {
+      "date": "2020-03-17",
+      "description": "Lysol",
+      "category": "Cleaning",
+      "amount": 25,
+      "id": 12
+    },
+    {
+      "date": "2020-03-16",
+      "description": "Purell",
+      "category": "Cleaning",
+      "amount": 400,
+      "id": 13
     }
   ]
 }

@@ -9,7 +9,7 @@ const Transaction = (props) => {
       <td>{date}</td>
       <td>{description}</td>
       <td>{category}</td>
-      <td>{amount}</td>
+      <td className={amount < 0 ? 'red' : ""}>${amount}</td>
       <td>
         <button className="ui button" onClick={() => props.delete(id)}>
           Delete

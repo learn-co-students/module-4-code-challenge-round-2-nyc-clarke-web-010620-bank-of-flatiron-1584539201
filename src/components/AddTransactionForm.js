@@ -40,7 +40,7 @@ class AddTransactionForm extends Component {
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.submitHandler}>
           <div className="inline fields">
             <input type="date" name="date" value={this.state.date} onChange={this.changeHandler}/>
             <input type="text" name="description" placeholder="Description" value={this.state.description}
@@ -56,7 +56,7 @@ class AddTransactionForm extends Component {
               onChange={this.changeHandler}
             />
           </div>
-          <button className="ui button" type="submit" onSubmit={this.submitHandler}>
+          <button className="ui button" type="submit">
             Add Transaction
           </button>
         </form>

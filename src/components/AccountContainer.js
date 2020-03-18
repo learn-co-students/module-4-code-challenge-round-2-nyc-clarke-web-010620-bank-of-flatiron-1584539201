@@ -36,7 +36,7 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm addNewTransaction={this.addNewTransaction}/>
         <TransactionsList renderTransactions={this.renderTransactions} />
       </div>
     );

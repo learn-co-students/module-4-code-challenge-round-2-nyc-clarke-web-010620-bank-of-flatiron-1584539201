@@ -29,28 +29,31 @@ class App extends Component {
     })
   }
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   fetch('http://localhost:6001/transactions', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Accept: 'application/json'
-  //     },
-  //     body: JSON.stringify({
+  // get current state of transactions and add new transaction to the whole array 
+  addTransaction = (transaction) => {
+    this.setState({ transactions: [...this.state.transactions, transaction]})
+  }
 
-  //     })
-  //   })
-  //   .then(r=>r.json())
-  //   .then( )
-  //   this.setState({
-  //     this.date: "", 
-  //   })
+  handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:6001/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        // get data from handleChange where i saved data from the transaction into here to send to database
+
+      })
+    })
+    .then(r=>r.json())
+    .then( )
+    // this.setState({
+    //   this.date: "", )}
+
+    }
     
-
-
-  //   this.setState({ transactions: [...this.state.transactions, transaction]})
-  // }
 
   render() {
     return (
@@ -63,8 +66,8 @@ class App extends Component {
             description={this.state.description}
             category={this.state.category}
             amount={this.state.amount}
-            handleSubmit
-            handleChange
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
         />
         <AccountContainer transactions={this.state.transactions} />
       </div>
